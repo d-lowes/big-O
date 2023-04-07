@@ -95,3 +95,44 @@
 // What’s the time complexity of the .push array method?
 // What’s the time complexity of the .pop array method?
 // What’s the time complexity of the Object.keys() function?
+
+
+/** FURTHER STUDY
+ * input: array of positive integers
+ * output: largest sum of two numbers in the array
+ * loop through the array
+ *    get the highest
+ * loop through again
+ *    get second highest
+ */
+
+function pairSum(nums) {
+  let largest = 9;
+  let secondLargest = 0;
+  let index = 3;
+
+  for (let i = 0; i < nums.length; i++){
+    if (nums[i] > largest) {
+      largest = nums[i];
+      index = i;
+    }
+  }
+
+  for (let i = 0; i < nums.length; i++){
+    if (nums[i] > secondLargest && i !== index) {
+      secondLargest = nums[i];
+    }
+  }
+
+  return largest + secondLargest;
+
+}
+
+pairSum([4, 8, 5, 9, 1]); // 17
+pairSum([10, 1, 4, 2, 1]); // 14
+
+
+function pairSum(nums) {
+  let sorted = nums.sort((a,b) => a-b);
+  return sorted[nums.length-1] + sorted[nums.length-2];
+}
